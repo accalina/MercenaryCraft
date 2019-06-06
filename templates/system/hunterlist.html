@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard | Wireframe</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <br>
+    <div class="container">
+        <h1>Recruit new Hunter</h1>
+        <hr>
+        <div class="row">
+            <div class="col-sm-8">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Max Health</th>
+                            <th>Min Attack</th>
+                            <th>Max Attack</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for hunter in data.hunterlist %}
+                        <tr>
+                            <td> <img height="100px" src="{{ hunter[2] }}" alt="{{ hunter[1] }}">  </td>
+                            <td> {{ hunter[1] }} </td>
+                            <td> {{ hunter[3] }} </td>
+                            <td> {{ hunter[4] }} </td>
+                            <td> {{ hunter[5] }} </td>
+                            <td> ${{ hunter[6] }} </td>
+                            <td>
+                                <a class="nes-btn is-primary" href="/market?buy={{ hunter[0] }}">Buy</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-3 col-sm-offset-1">
+                <br>
+                {{ data.infoplayer[1] }}
+                <hr>
+                Cash : $ {{ data.infoplayer[2] }}
+                <hr>
+                <a class="nes-btn is-primary" href="/">Back</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

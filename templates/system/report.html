@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard | Wireframe</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <br>
+    <div class="container-fluid">
+        <h1>Operation Report</h1>
+        <hr>
+        <div class="row">
+            <div class="col-sm-9">
+                <br>
+                <h3>Battle Log</h3>
+                <table class="table table-bordered">
+                    <tbody>
+                        {% for log in data.log %}
+                        <tr>
+                            <td style="font-size=8px"> {{ log }} </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-sm-2">
+                Winner: <p> {{ data.winner}}</p>
+                <hr>
+                <a class="nes-btn is-primary" href="/">Back</a>
+                <button type="button" onclick="window.location.reload(true)" class="nes-btn is-warning">Fight Again</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        app = new Vue({
+            el: ".container-fluid",
+            delimiters: ['[[', ']]'],
+            data: {
+                enemy: "",
+                enemyname: "",
+                hunter: "",
+                huntername: "",
+                progress: 0,
+            },
+            methods: {
+                addEnemy: function (id, name) {
+                    if (this.enemy == "") {
+                        this.enemy = id
+                        this.enemyname = name
+                        this.progress += 1
+                    } else {
+                        this.enemy = id
+                        this.enemyname = name
+                    }
+                },
+                addHunter: function (id, name) {
+                    if (this.hunter == "") {
+                        this.hunter = id
+                        this.huntername = name
+                        this.progress += 1
+                    } else {
+                        this.hunter = id
+                        this.hunter = name
+                    }
+                },
+                fight: function () {
+                    window.location.href = `/fight?enemy=${this.enemy}&hunter=${this.hunter}`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

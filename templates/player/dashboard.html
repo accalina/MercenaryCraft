@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard | Wireframe</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="nes-container with-title">
+                    <span class="title">Status</span>
+                    <h3>{{data.infoplayer[1]}}</h3>
+                    <p>Leader: {{data.infoplayer[0]}}</p>
+                    <p>${{data.infoplayer[2]}}</p>
+                </div>
+
+                <br>
+                <div class="nes-container with-title">
+                    <span class="title">Action</span>
+                    <ul>
+                    <li><a href="/members" class="nes-btn is-primary">Members</a></li>
+                    <li><a href="/market" class="nes-btn">Market</a></li>
+                    <li><a href="/" class="nes-btn is-success">Research</a></li>
+                    <li><a href="/operations" class="nes-btn is-warning">Operation</a></li>
+                    </ul>
+                    <br>
+                    <a href="/logout" class="nes-btn is-error">Sign out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

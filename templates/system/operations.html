@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard | Wireframe</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <br>
+    <div class="container-fluid">
+        <h1>Operation List</h1>
+        <hr>
+        <div class="row">
+            <div class="col-sm-6">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#enemy">Enemy</a></li>
+                    <li><a data-toggle="tab" href="#hunter">My Hunter</a></li>
+                </ul>
+                
+                <div class="tab-content">
+                    <div id="enemy" class="tab-pane fade in active">
+                        <br>
+                        <h3>Enemy List</h3>
+                        <table class="table table-bordered">
+                            <tbody>
+                                {% for enemy in data.enemies %}
+                                <tr>
+                                    <td> <img height="100px" src="{{ enemy[2] }}" alt="{{ enemy[1] }}"> </td>
+                                    <td> {{ enemy[1] }} </td>
+                                    <td> {{ enemy[3] }} </td>
+                                    <td> {{ enemy[4] }} </td>
+                                    <td> {{ enemy[5] }} </td>
+                                    <td> ${{ enemy[6] }} </td>
+                                    <td>
+                                        <button type="button" class="nes-btn is-warning" @click="addEnemy('{{enemy[0]}}', '{{enemy[1]}}')">Select</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="hunter" class="tab-pane fade">
+                        <br>
+                        <h3>My Hunter List</h3>
+                        <table class="table table-bordered">
+                            <tbody>
+                                {% for hunter in data.myhunter %}
+                                <tr>
+                                    <td> <img height="100px" src="{{ hunter[5] }}" alt="{{ hunter[1] }}"> </td>
+                                    <td> {{ hunter[4] }} </td>
+                                    <td> {{ hunter[6] }} </td>
+                                    <td> {{ hunter[7] }} </td>
+                                    <td> {{ hunter[8] }} </td>
+                                    <td> ${{ hunter[9] - (0.2 * hunter[9])|int }} </td>
+                                    <td>
+                                        <button type="button" class="nes-btn is-success" @click="addHunter('{{hunter[0]}}', '{{hunter[4]}}')">Select</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="col-sm-3 col-sm-offset-1">
+
+                Enemy: <p>[[ enemyname ]]</p>
+                Hunter: <p> [[ huntername ]]</p>
+                <hr>
+                <progress class="nes-progress" :value="progress" max="2"></progress>
+
+                <a class="nes-btn is-primary" href="/">Back</a>
+                <a v-if="progress == 2" class="nes-btn is-error" @click="fight()">Fight</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        app = new Vue({
+            el: ".container-fluid",
+            delimiters: ['[[', ']]'],
+            data: {
+                enemy: "",
+                enemyname: "",
+                hunter: "",
+                huntername: "",
+                progress: 0,
+            },
+            methods: {
+                addEnemy: function(id,name){
+                    if (this.enemy == ""){
+                        this.enemy = id
+                        this.enemyname = name
+                        this.progress += 1
+                    }else{
+                        this.enemy = id
+                        this.enemyname = name
+                    }
+                },
+                addHunter: function (id, name) {
+                    if (this.hunter == "") {
+                        this.hunter = id
+                        this.huntername = name
+                        this.progress += 1
+                    } else {
+                        this.hunter = id
+                        this.hunter = name
+                    }
+                },
+                fight: function(){
+                    window.location.href=`/fight?enemy=${this.enemy}&hunter=${this.hunter}`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
