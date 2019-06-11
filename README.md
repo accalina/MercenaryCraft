@@ -1,6 +1,8 @@
 # MercenaryCraft
 
 [![N|Solid](https://upload.wikimedia.org/wikipedia/commons/3/34/Blue_Python_3.6_Shield_Badge.svg)](https://nodesource.com/products/nsolid)
+[![Build Status](https://travis-ci.org/accalina/MercenaryCraft.svg?branch=wip)](https://travis-ci.org/accalina/MercenaryCraft)
+
 
 A Simple web based games with fighting theme, build with Python and SQLite3
 
