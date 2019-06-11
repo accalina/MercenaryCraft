@@ -35,8 +35,11 @@ def login(username, password):
 
 # PLAYER -------------------------------------------------------------------------------------------
 def get_info_player(username):
-	result = query(f"select username, mercname, merccash from account where username = '{username}'")[0]
-	return result
+	try:
+		result = query(f"select username, mercname, merccash from account where username = '{username}'")[0]
+		return result
+	except IndexError:
+		return False
 	
 # BUY and LIST HUNTERS -----------------------------------------------------------------------------
 def myhunter(username):

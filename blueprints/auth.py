@@ -11,8 +11,11 @@ auth = Blueprint('auth',__name__, template_folder="../templates", static_folder=
 @auth.route('/index')
 def index():
     if 'username' in session:
-        infoplayer = model.get_info_player(session['username'])
-        return render_template('player/dashboard.html', data={'infoplayer': infoplayer})
+        if model.get_info_player(session['username']):
+            infoplayer = model.get_info_player(session['username'])
+            return render_template('player/dashboard.html', data={'infoplayer': infoplayer})
+        else:
+            return "BAD USERNAME: {} not allowed, 403 FORBIDDEN, ".format(session['username']), 403
     else:
         return redirect("/login")
 
