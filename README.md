@@ -2,6 +2,8 @@
 
 [![N|Solid](https://upload.wikimedia.org/wikipedia/commons/3/34/Blue_Python_3.6_Shield_Badge.svg)](https://nodesource.com/products/nsolid)
 [![Build Status](https://travis-ci.org/accalina/MercenaryCraft.svg?branch=wip)](https://travis-ci.org/accalina/MercenaryCraft)
+[(https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667)](https://merc-craft.herokuapp.com/login)
+[![N|Solid](https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667)](https://merc-craft.herokuapp.com/login)
 
 
 A Simple web based games with fighting theme, build with Python and SQLite3
